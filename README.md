@@ -1,6 +1,6 @@
 # Urban Eatery
 
-> \*"**Good Food for Good Moments"\***
+> \"**Good Food for Good Moments**\"
 
 ![Untitled](src/images/ReadmeCanvas.png)
 
