@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const RecommendFood = (props) => {
-  const { id, image } = props.recommendFoods;
+  const { id, img } = props.recommendFoods;
 
   return (
     <Link to={"../food/" + id}>
@@ -12,7 +12,7 @@ const RecommendFood = (props) => {
             ? "selected moor-images mr-3"
             : "moor-images mr-3"
         }
-        src={image}
+        src={img}
         height="150px"
         alt="food-image"
       />
