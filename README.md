@@ -18,7 +18,7 @@
 | Nishchay Verma      | S20190010128 |
 | Praveen Kumar Reddy | S20190010149 |
 
-### [Live Demo](https://urban-eatery-4u7wna65c-tourist1256.vercel.app/)
+### [Live Demo](https://foodie-eb5cd.web.app)
 
 <small className="text-secondary">
     Copyright &copy; 2021 Urban Eatery. Proudly created by Technon Group (Group 3)
