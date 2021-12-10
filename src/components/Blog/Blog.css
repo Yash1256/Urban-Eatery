@@ -1,0 +1,18 @@
+.features .card {
+	border: none;
+	padding: 6px;
+}
+
+.features .card:hover {
+	box-shadow: 0px 7px 10px rgb(20, 18, 18);
+	border-radius: 7px;
+}
+
+.header-text::after {
+	content: "";
+	width: 250px;
+	margin: 7px auto;
+	height: 2px;
+	background-color: rgb(26, 7, 10);
+	display: block;
+}

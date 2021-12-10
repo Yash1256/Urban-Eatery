@@ -1,0 +1,22 @@
+.navbar-brand img {
+  height: 60px;
+}
+
+.navbar {
+  box-shadow: 0px 1px 3px #0303031f;
+}
+
+@media (max-width: 600px) {
+  .navbar-brand img {
+    height: 30px;
+  }
+
+  .btn-rounded {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+}
+
+.circle {
+  border-radius: 50%;
+}
