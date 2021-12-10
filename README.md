@@ -17,3 +17,5 @@
 | Abhishek Jain       | S20190010003 |
 | Nishchay Verma      | S20190010128 |
 | Praveen Kumar Reddy | S20190010149 |
+
+## Client Side [Source Code Link](https://github.com/Yash1256/Urban-Eatery)

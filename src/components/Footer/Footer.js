@@ -48,8 +48,8 @@ const Footer = () => {
         <div className="footer-bottom d-flex justify-content-between">
           <small className="text-secondary">
             Copyright &copy; 2021 Urban Eatery. Proudly created by
-            {" Technon Group (Group 3)"}
-            <span>&nbsp;❤️</span>
+            {" Technon Group (Group 3) "}
+            <span role="img">❤️</span>
             <span>
               <a
                 className="text-color"

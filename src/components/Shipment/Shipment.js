@@ -3,7 +3,6 @@ import "./Shipment.css";
 import * as firebase from "firebase/app";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import { useAuth } from "../SignUp/useAuth";
 
 const Shipment = (props) => {
   useEffect(() => {
@@ -32,11 +31,6 @@ const Shipment = (props) => {
   const ordersRef = firebase.firestore().collection("/user");
 
   function onOrderComplete() {
-    var orders = {
-      deliveryDetails: props.deliveryDetails,
-      userID: useAuth.userID,
-    };
-
     ordersRef
       .add({
         deliveryDetails: props.deliveryDetails,
