@@ -13,7 +13,7 @@ const FoodItem = (props) => {
           <div className="card-body">
             <h5>{name}</h5>
             <p>{description}</p>
-            <h4>₹{price.toFixed(1) * 47}</h4>
+            <h4>₹{price.toFixed(1) * 40}</h4>
           </div>
         </div>
       </Link>
