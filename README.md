@@ -18,4 +18,15 @@
 | Nishchay Verma      | S20190010128 |
 | Praveen Kumar Reddy | S20190010149 |
 
-## Client Side [Source Code Link](https://github.com/Yash1256/Urban-Eatery)
+### [Live Demo](https://urban-eatery-4u7wna65c-tourist1256.vercel.app/)
+
+<small className="text-secondary">
+    Copyright &copy; 2021 Urban Eatery. Proudly created by Technon Group (Group 3)
+    <span role="img">❤️</span>
+    <span>
+      <a
+        className="text-color"
+        href="https://github.com/Yash1256/Urban-Eatery"
+      ></a>
+    </span>
+  </small>
