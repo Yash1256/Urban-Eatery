@@ -3,6 +3,7 @@ import "./Shipment.css";
 import * as firebase from "firebase/app";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { useAuth } from "../SignUp/useAuth";
 
 const Shipment = (props) => {
   useEffect(() => {
@@ -10,10 +11,12 @@ const Shipment = (props) => {
   }, []);
 
   const { toDoor, road, flat, businessName, address } = props.deliveryDetails;
+  const {orderID , deliveryDetails } = props.orderDetails ; 
 
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = (data) => {
     props.deliveryDetailsHandler(data);
+    console.log("submitted in database");
     onOrderComplete();
   };
   const subTotal = props.cart.reduce((acc, crr) => {
@@ -27,15 +30,24 @@ const Shipment = (props) => {
   const tax = (subTotal / 100) * 5;
   const deliveryFee = totalQuantity && 40;
   const grandTotal = subTotal + tax + deliveryFee;
-
+  // var orderID 
   const ordersRef = firebase.firestore().collection("/user");
-
   function onOrderComplete() {
+    // var orders = {
+    //   deliveryDetails: props.deliveryDetails,
+    //   userID: useAuth.userID,
+    // };
+
     ordersRef
       .add({
-        deliveryDetails: props.deliveryDetails,
+        deliveryDetails : props.deliveryDetails, 
       })
       .then(function (docRef) {
+        props.setorderDetailsHandler({
+          deliveryDetails : props.deliveryDetails, 
+          orderID : docRef.id 
+        })
+        // orderID = docRef.id ; 
         console.log("Tutorial created with ID: ", docRef.id);
       })
       .catch(function (error) {
@@ -50,6 +62,18 @@ const Shipment = (props) => {
           <h4>Edit Delivery Details</h4>
           <hr />
           <form onSubmit={handleSubmit(onSubmit)} className="py-5">
+            <div className="form-group">
+              <input
+                name="toDoor"
+                className="form-control"
+                ref={register({ required: true })}
+                defaultValue={toDoor}
+                placeholder="Delivery To Door"
+              />
+              {errors.toDoor && (
+                <span className="error">This Option is required</span>
+              )}
+            </div>
             <div className="form-group">
               <input
                 name="road"
@@ -195,7 +219,12 @@ const Shipment = (props) => {
 
             {totalQuantity ? (
               toDoor && road && flat && businessName && address ? (
-                <Link to="/order-complete">
+                <Link to= 
+                {{
+                    pathname : "/order-complete", 
+                    state : orderID  
+                }}
+                    >
                   <button
                     onClick={() => props.clearCart()}
                     className="btn btn-block btn-danger"

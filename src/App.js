@@ -44,6 +44,16 @@ function App() {
     address: null
   });
 
+  const [orderDetails, setorderDetails] = useState({
+       "deliveryDetails" : deliveryDetails,
+        "orderID"  : null, 
+        "timestamp" : null
+   });
+
+  const setorderDetailsHandler = data =>{
+    setorderDetails(data) ; 
+  }
+
   const deliveryDetailsHandler = data => {
     setDeliveryDetails(data);
   }
@@ -108,6 +118,8 @@ function App() {
             />
             <Shipment
               cart={cart}
+              orderDetails={orderDetails}
+              setorderDetailsHandler={setorderDetailsHandler}
               deliveryDetails={deliveryDetails}
               deliveryDetailsHandler={deliveryDetailsHandler}
               checkOutItemHandler={checkOutItemHandler}
@@ -122,6 +134,8 @@ function App() {
             />
             <OrderComplete
               deliveryDetails={deliveryDetails}
+              setorderDetailsHandler={setorderDetailsHandler}
+              orderDetails = {orderDetails}
             />
             <Footer />
           </PrivateRoute>
