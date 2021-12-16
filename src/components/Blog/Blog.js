@@ -1,13 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import './Blog.css';
-import allBlogs from '../../fakeData/blog';
 import BlogItem from '../BlogItem/BlogItem';
 
 const Blog = () => {
 
     const [blogs, setBlogs] = useState([]);
     useEffect(() => {
-        setBlogs(allBlogs);
+        const getData = () => {
+            fetch("blog.json", {
+              headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+              },
+            })
+              .then(function (response) {
+                console.log(response);
+                return response.json();
+              })
+              .then(function (myJson) {
+                setBlogs(myJson);
+                console.log(myJson);
+              });
+          };
+          getData();
     }, []);
 
     return (

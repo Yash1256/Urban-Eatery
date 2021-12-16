@@ -67,10 +67,17 @@ const OrderComplete = (props) => {
                                 <p>Your Rider</p>
                             </div>
                         </div>
+                         
+                        <button className="btn btn-block my-3 btn-info">
+              <a class="text-white" href="tel:+917355153249">
+                Contact
+              </a>
+            </button>
 
                         <button className="btn btn-block my-3 btn-danger" onClick={cancelorder}>Cancel Order</button>
-                        <button className="btn btn-block my-3 btn-danger">Contact</button>
-                    </div>
+                        
+                        
+                         </div>
                 </div>
             </div>
         </div>

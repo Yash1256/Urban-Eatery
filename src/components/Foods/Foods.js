@@ -20,6 +20,7 @@ const Foods = (props) => {
 
 	useEffect(() => {
 		setFoods(allFoods);
+
 	}, []);
 
 	const selectedFoods = foods.filter((food) => food.category === selectedFoodType);
@@ -36,7 +37,7 @@ const Foods = (props) => {
 								className={selectedFoodType === 'breakfast' ? 'active nav-link' : 'nav-link'}
 							>
 								<img src={breakfast} alt="foodIcon" width="45px" className="mr-2" />
-								Breakfast
+								Break-fast
 							</span>
 						</li>
 						<li className="nav-item" onClick={() => setSelectedFoodType('lunch')}>
