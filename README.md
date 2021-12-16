@@ -20,6 +20,10 @@
 
 ### [Live Demo](https://foodie-eb5cd.web.app)
 
+### [Documentation](https://drive.google.com/file/d/153BBmtJbu2gBIjY0IdX-5GivXcK6ShJO/view?usp=sharing)
+
+### [Video Link](https://drive.google.com/file/d/1Zy5_PyxwtKOehHAQ_D3PQCjN1A7a-8Pp/view)
+
 <small className="text-secondary">
     Copyright &copy; 2021 Urban Eatery. Proudly created by Technon Group (Group 3)
     <span role="img">❤️</span>
