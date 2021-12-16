@@ -1,0 +1,42 @@
+[
+  {
+    "id": "1",
+    "name": "Begal and Cream Cheese",
+    "category": "breakfast",
+    "img": "https://i.imgur.com/BaS2G0b.png",
+    "description": "Pecorino smellY cheese melted cheese",
+    "story":
+      "Gummi bears topping pie pastry bonbon cupcake caramels. Muffin muffin jujubes donut",
+    "price": 13.99
+  },
+  {
+    "id": "2",
+    "name": "Begal and Cream Cheese",
+    "category": "breakfast",
+    "img": "https://i.imgur.com/BaS2G0b.png",
+    "description": "Pecorino smellY cheese melted cheese",
+    "story":
+      "Gummi bears topping pie pastry bonbon cupcake caramels. Muffin muffin jujubes donut",
+    "price": 13.99
+  },
+  {
+    "id": "3",
+    "name": "Begal and Cream Cheese",
+    "category": "breakfast",
+    "img": "https://i.imgur.com/BaS2G0b.png",
+    "description": "Pecorino smellY cheese melted cheese",
+    "story":
+      "Gummi bears topping pie pastry bonbon cupcake caramels. Muffin muffin jujubes donut",
+    "price": 13.99
+  },
+  {
+    "id": "4",
+    "name": "Begal and Cream Cheese",
+    "category": "breakfast",
+    "img": "https://i.imgur.com/BaS2G0b.png",
+    "description": "Pecorino smellY cheese melted cheese",
+    "story":
+      "Gummi bears topping pie pastry bonbon cupcake caramels. Muffin muffin jujubes donut",
+    "price": 13.99
+  }
+]

@@ -1,0 +1,23 @@
+[
+    {
+        "id": 101,
+        "icon": ["../images/ICON/Group 204.png", "../images/ICON/bus.png"],
+        "image": "../images/img/blog.png",
+        "title": "Quick Delivery",
+        "description": "Bacon ipsum dolor amet picanha chicken pig porchetta tenderloin meatball rump. Corned beef strip steak swine chislic tenderloin venison. Doner ham hock tail tongue hamburger landjaeger. Filet mignon sirloin tongue hamburger meatloaf shankle. Corned beef beef venison, hamburger kevin chicken alcatra pancetta filet mignon "
+    },
+    {
+        "id": 102,
+        "icon": ["../images/ICON/Group 1133.png", "../images/ICON/notification.png"],
+        "image": "../images/img/blog.png",
+        "title": "A Good Auto Responder",
+        "description": "Bacon ipsum dolor amet picanha chicken pig porchetta tenderloin meatball rump. Corned beef strip steak swine chislic tenderloin venison. Doner ham hock tail tongue hamburger landjaeger. Filet mignon sirloin tongue hamburger meatloaf shankle. Corned beef beef venison, hamburger kevin chicken alcatra pancetta filet mignon "
+    },
+    {
+        "id": 103,
+        "icon": ["../images/ICON/Group 245.png", "../images/ICON/car.png"],
+        "image": "../images/img/blog.png",
+        "title": "Home Delivery",
+        "description": "Bacon ipsum dolor amet picanha chicken pig porchetta tenderloin meatball rump. Corned beef strip steak swine chislic tenderloin venison. Doner ham hock tail tongue hamburger landjaeger. Filet mignon sirloin tongue hamburger meatloaf shankle. Corned beef beef venison, hamburger kevin chicken alcatra pancetta filet mignon "
+    }
+]

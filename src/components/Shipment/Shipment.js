@@ -30,13 +30,9 @@ const Shipment = (props) => {
   const tax = (subTotal / 100) * 5;
   const deliveryFee = totalQuantity && 40;
   const grandTotal = subTotal + tax + deliveryFee;
-  // var orderID 
+
   const ordersRef = firebase.firestore().collection("/user");
   function onOrderComplete() {
-    // var orders = {
-    //   deliveryDetails: props.deliveryDetails,
-    //   userID: useAuth.userID,
-    // };
 
     ordersRef
       .add({

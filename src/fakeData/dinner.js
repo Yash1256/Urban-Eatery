@@ -4,8 +4,8 @@ var dinner = [
         "name": "Baked Chicken Fry",
         "category": "dinner",
         "img": "https://i.imgur.com/b50xqHV.png",
-        "description": "how we dream about our future",
-        "story": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularized in the 1960s.",
+        "description": "Pecorino smellY cheese melted cheese",
+        "story": "Gummi bears topping pie pastry bonbon cupcake caramels. Muffin muffin jujubes donut",
         "price": 9.99
     },
     {
@@ -13,8 +13,8 @@ var dinner = [
         "name": "Lemoni Selmon Piccata",
         "category": "dinner",
         "img": "https://i.imgur.com/O0I2Rvi.png",
-        "description": "how we dream about our future",
-        "story": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularized in the 1960s.",
+        "description": "Pecorino smellY cheese melted cheese",
+        "story": "Gummi bears topping pie pastry bonbon cupcake caramels. Muffin muffin jujubes donut",
         "price": 10.99
     },
     {
@@ -22,8 +22,8 @@ var dinner = [
         "name": "Garlic Butter Baked Salmons",
         "category": "dinner",
         "img": "https://i.imgur.com/YNtu9XA.png",
-        "description": "how we dream about our future",
-        "story": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularized in the 1960s.",
+        "description": "Pecorino smellY cheese melted cheese",
+        "story": "Gummi bears topping pie pastry bonbon cupcake caramels. Muffin muffin jujubes donut",
         "price": 6.99
     },
     {
@@ -31,8 +31,8 @@ var dinner = [
         "name": "Pork Tenderloin With Quinoa",
         "category": "dinner",
         "img": "https://i.imgur.com/E6SndU9.png",
-        "description": "how we dream about our future",
-        "story": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularized in the 1960s.",
+        "description": "Pecorino smellY cheese melted cheese",
+        "story": "Gummi bears topping pie pastry bonbon cupcake caramels. Muffin muffin jujubes donut",
         "price": 8.99
     },
     {
@@ -40,8 +40,8 @@ var dinner = [
         "name": "Beef Tendiro Grapefruit",
         "category": "dinner",
         "img": "https://i.imgur.com/Uv5Z39E.png",
-        "description": "how we dream about our future",
-        "story": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularized in the 1960s.",
+        "description": "Pecorino smellY cheese melted cheese",
+        "story": "Gummi bears topping pie pastry bonbon cupcake caramels. Muffin muffin jujubes donut",
         "price": 12.99
     },
     {
@@ -49,8 +49,8 @@ var dinner = [
         "name": "Salmon with Green salad",
         "category": "dinner",
         "img": "https://i.imgur.com/NnNC2Jj.png",
-        "description": "how we dream about our future",
-        "story": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularized in the 1960s.",
+        "description": "Pecorino smellY cheese melted cheese",
+        "story": "Gummi bears topping pie pastry bonbon cupcake caramels. Muffin muffin jujubes donut",
         "price": 9.99
     },
 
