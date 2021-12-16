@@ -18,8 +18,13 @@ const Foods = (props) => {
 	const [ selectedFoodType, setSelectedFoodType ] = useState('lunch');
 	const [ selectedFastFoodType, setSelectedFastFoodType ] = useState('pizza');
 
+
+
+
 	useEffect(() => {
-		setFoods(allFoods);
+ 
+		setFoods(allFoods); 
+
 
 	}, []);
 

@@ -95,17 +95,9 @@ const SignUp = () => {
                 className="form-control"
                 ref={register({
                   required: "Name is required",
-                  //   pattern: {
-                  //     value:
-                  //       /^(?=^.{6,20}$)^[a-zA-Z-]+\s[a-zA-Z-]+\s[a-zA-Z-]+$/i,
-                  //     message: "Name must be 6 - 20 characters & Max 3 words",
-                  //   },
                 })}
                 placeholder="Name"
               />
-              {/* <span className="error">
-                {errors.name && errors.name.message}
-              </span> */}
             </div>
 
             <div className="form-group">
