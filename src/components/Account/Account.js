@@ -1,15 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import allFoods from "../../fakeData/index";
-import breakfast from "../../images/foodicon/breakfast.png";
-import dinner from "../../images/foodicon/dinner.png";
-import lunch from "../../images/foodicon/lunch.png";
 import "./../Foods/Foods.css";
 import "./Account.css";
+import firebase from "./../firebase-config";
 import { useAuth } from "../SignUp/useAuth";
 
 const Account = (props) => {
   const [type, setType] = useState("account");
+  const userauth = useAuth();
+  const [userid, setuserid] = useState("nonuser");
+
+  useEffect(() => {
+    const id = userauth.user == null ? "nonuser" : userauth.user.uid;
+    setuserid(id);
+    console.log(userid);
+  }, []);
+
   return (
     <section className="food-area my-5">
       <div className="container">

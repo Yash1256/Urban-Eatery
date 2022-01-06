@@ -6,7 +6,7 @@ import "./PastOrder.css";
 import firebase from "../firebase-config";
 import { useAuth } from "../SignUp/useAuth";
 
-const Account = (props) => {
+const FoodsPastOrder = (props) => {
   const [type, setType] = useState("pastOrder");
   const userauth = useAuth();
   const [foods, setFoods] = useState([]);
@@ -63,32 +63,16 @@ const Account = (props) => {
             </li>
           </ul>
         </nav>
-        <section className="food-area my-5">
-          <div className="container">
-            <div className="row my-5">
-              {selectedFastFoods.map((food) => (
-                <FoodItemPastOrders food={food} key={food.id} />
-              ))}
-            </div>
-
-            <div className="text-center">
-              {props.cart.length ? (
-                <Link to="/checkout">
-                  <button className="btn btn-danger">
-                    Check Out Your Food
-                  </button>
-                </Link>
-              ) : (
-                <button disabled className="btn btn-secondary">
-                  Check Out Your Food
-                </button>
-              )}
-            </div>
+        <div className="container">
+          <div className="row my-5">
+            {selectedFastFoods.map((food) => (
+              <FoodItemPastOrders food={food} key={food.id} />
+            ))}
           </div>
-        </section>
+        </div>
       </div>
     </section>
   );
 };
 
-export default Account;
+export default FoodsPastOrder;
