@@ -77,11 +77,14 @@ const Account = (props) => {
             <div className="col w-50">
               <div className="float-container">
                 <div className="overview">
-                  <div className="avatar-container">
-                    <img src={image} alt="Birju Avatar" className="avatar" />
-                  </div>
                   <div className="name">
                     <h1 class="display-4">Profile</h1>
+                    <div
+                      className="avatar-container"
+                      style={{ marginLeft: "70px" }}
+                    >
+                      <img src={image} alt="Profile Image" className="avatar" />
+                    </div>
                     <p className="name-description lead">{quote}</p>
                   </div>
                 </div>

@@ -14,7 +14,9 @@ const FoodItemPastOrders = (props) => {
             <h5>{name}</h5>
             <p>{description}</p>
             <h4>₹{price.toFixed(1) * 40}</h4>
-            <button>Order Again</button>
+            <button disabled className="btn btn-block btn-secondary">
+              Order Again
+            </button>
           </div>
         </div>
       </Link>

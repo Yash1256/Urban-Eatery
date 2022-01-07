@@ -1,18 +1,19 @@
 import React, { useEffect } from "react";
 import "./Shipment.css";
-import * as firebase from "firebase/app";
+// import * as firebase from "firebase/app";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { useAuth } from "../SignUp/useAuth";
+import { useState } from "react";
+import firebase from "../firebase-config";
 
 const Shipment = (props) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
   const { toDoor, road, flat, businessName, address } = props.deliveryDetails;
-  const {orderID , deliveryDetails } = props.orderDetails ; 
-
+  const { orderID, deliveryDetails } = props.orderDetails;
+  const [userid, setuserid] = useState();
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = (data) => {
     props.deliveryDetailsHandler(data);
@@ -30,20 +31,35 @@ const Shipment = (props) => {
   const tax = (subTotal / 100) * 5;
   const deliveryFee = totalQuantity && 40;
   const grandTotal = subTotal + tax + deliveryFee;
+  const userauth = useAuth();
 
-  const ordersRef = firebase.firestore().collection("/user");
-  function onOrderComplete() {
+  useEffect(() => {
+    const user = () => {
+      const user = firebase.auth().currentUser;
+      if (user) {
+        setuserid(user.uid);
+      }
+    };
+    user();
+  }, []);
 
+  async function onOrderComplete() {
+    const ordersRef = await firebase
+      .firestore()
+      .collection("users")
+      .doc(userid)
+      .collection("orders");
     ordersRef
       .add({
-        deliveryDetails : props.deliveryDetails, 
+        products: props.cart,
+        deliveryDetails: props.deliveryDetails,
       })
       .then(function (docRef) {
         props.setorderDetailsHandler({
-          deliveryDetails : props.deliveryDetails, 
-          orderID : docRef.id 
-        })
-        // orderID = docRef.id ; 
+          deliveryDetails: props.deliveryDetails,
+          orderID: docRef.id,
+        });
+        // orderID = docRef.id ;
         console.log("Tutorial created with ID: ", docRef.id);
       })
       .catch(function (error) {
@@ -215,12 +231,12 @@ const Shipment = (props) => {
 
             {totalQuantity ? (
               toDoor && road && flat && businessName && address ? (
-                <Link to= 
-                {{
-                    pathname : "/order-complete", 
-                    state : orderID  
-                }}
-                    >
+                <Link
+                  to={{
+                    pathname: "/order-complete",
+                    state: orderID,
+                  }}
+                >
                   <button
                     onClick={() => props.clearCart()}
                     className="btn btn-block btn-danger"
