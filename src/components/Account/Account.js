@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./../Foods/Foods.css";
-import "./Account.css";
+// import "./Account.css";
 import { useAuth } from "../SignUp/useAuth";
 
 let quotes = [
@@ -78,7 +78,6 @@ const Account = (props) => {
               <div className="float-container">
                 <div className="overview">
                   <div className="name">
-                    <h1 class="display-4">Profile</h1>
                     <div
                       className="avatar-container"
                       style={{ marginLeft: "70px" }}
