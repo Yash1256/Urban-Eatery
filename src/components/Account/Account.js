@@ -2,20 +2,51 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./../Foods/Foods.css";
 import "./Account.css";
-import firebase from "./../firebase-config";
 import { useAuth } from "../SignUp/useAuth";
 
+let quotes = [
+  "The Food Quotes makes me very hungry for the best food.",
+  "Food is my world! No matter if anybody say me hippo!",
+  "I love food because at the end, it is the only thing i love the most in my life!",
+  "If i have to choose between Boyfriend or Food, I would definitely go with the food.",
+  "My food love is pure than your fake love. Food live long!",
+  "Food is my negative point, I can't be without good food.",
+  "I love only healthy food, It gives me the strength more than junk food.",
+  "I would love to be a healthy foodie not to be a fake love!",
+  "Healthy food makes a healthy future and life.",
+  "Eat healthy, feel healthy and stay healthy!",
+];
+
 const Account = (props) => {
+  const [quote, setQuote] = useState(quotes[0]);
   const [type, setType] = useState("account");
   const userauth = useAuth();
-  const [userid, setuserid] = useState("nonuser");
-
+  const [userid, setuserid] = useState();
+  const [email, setemail] = useState();
+  const [name, setname] = useState();
+  const [image, setimage] = useState("");
+  const [deliverydetails, setdeliverydetails] = useState(
+    "Some where, From , SOme Where"
+  );
   useEffect(() => {
-    const id = userauth.user == null ? "nonuser" : userauth.user.uid;
-    setuserid(id);
-    console.log(userid);
-  }, []);
+    setdeliverydetails(props.deliverydetails);
+    const user = async () => {
+      if (userauth.user) {
+        const id = await userauth.user;
+        if (userauth.user != undefined || userauth.user != null) {
+          setuserid(id);
+          console.log(user);
+          setimage(id.photoURL);
+          setname(id.displayName);
+          setemail(id.email);
+        }
+      }
+    };
+    user();
 
+    setQuote(quotes[Math.floor(Math.random() * 10)]);
+  }, []);
+  console.log(userid);
   return (
     <section className="food-area my-5">
       <div className="container">
@@ -41,29 +72,27 @@ const Account = (props) => {
             </li>
           </ul>
         </nav>
-        <div className="container">
+        <div className="card-body">
           <div className="row">
             <div className="col w-50">
               <div className="float-container">
                 <div className="overview">
                   <div className="avatar-container">
-                    <img
-                      src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Pandit_Birju_Maharaj.jpg"
-                      alt="Birju Avatar"
-                      className="avatar"
-                    />
+                    <img src={image} alt="Birju Avatar" className="avatar" />
                   </div>
                   <div className="name">
-                    <h1>Birju</h1>
-                    <p className="name-description">Foodie Lover</p>
+                    <h1 class="display-4">Profile</h1>
+                    <p className="name-description lead">{quote}</p>
                   </div>
                 </div>
               </div>
             </div>
             <div className="col w-50" style={{ marginTop: "40px" }}>
-              <div>Name : </div>
+              <h4 class="display-4">{name}</h4>
               <br />
-              <div>email : </div>
+              <p className="lead">{email} </p>
+              <br />
+              <div>{deliverydetails} </div>
             </div>
           </div>
         </div>
@@ -71,11 +100,5 @@ const Account = (props) => {
     </section>
   );
 };
-
-// Account.propTypes = {
-//   history: PropType.shape({
-//     push: PropType.func
-//   }).isRequired
-// };
 
 export default Account;

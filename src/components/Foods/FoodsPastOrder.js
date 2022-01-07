@@ -10,29 +10,38 @@ const FoodsPastOrder = (props) => {
   const [type, setType] = useState("pastOrder");
   const userauth = useAuth();
   const [foods, setFoods] = useState([]);
-  const [userid, setuserid] = useState("nonuser");
+  const [userid, setuserid] = useState();
 
   useEffect(() => {
-    const id = userauth.user == null ? "nonuser" : userauth.user.uid;
-    setuserid(id);
+    const user = async () => {
+      if (userauth.user) {
+        const id = await userauth.user.uid;
+        if (userauth.user != undefined || userauth.user != null) {
+          setuserid(id);
+        }
+      }
+    };
+    user();
   }, []);
 
   useEffect(() => {
-    const Ref = firebase
-      .firestore()
-      .collection("users")
-      .doc(userid)
-      .collection("orders");
-
     const fetchdata = async () => {
-      Ref.where("products", "!=", [])
-        .get()
-        .then((snap) => {
-          snap.forEach((doc) => {
-            const data = doc.data()["products"];
-            setFoods((foods) => [...foods, data[0]]);
+      if (userid != undefined) {
+        const Ref = await firebase
+          .firestore()
+          .collection("users")
+          .doc(userid)
+          .collection("orders");
+
+        Ref.where("products", "!=", [])
+          .get()
+          .then((snap) => {
+            snap.forEach((doc) => {
+              const data = doc.data()["products"];
+              setFoods((foods) => [...foods, data[0]]);
+            });
           });
-        });
+      }
     };
     fetchdata();
     setFoods(foods);
