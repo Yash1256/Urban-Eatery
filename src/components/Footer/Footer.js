@@ -2,8 +2,11 @@ import React from "react";
 import "./Footer.css";
 import whiteLogo from "../../images/logo.png";
 import { Link } from "react-router-dom";
-
+// import firebase from "firebase";
+import { useAuth } from "../SignUp/useAuth";
 const Footer = () => {
+  const auth = useAuth();
+  const uid = auth.user == undefined ? "sddfd" : auth.user.uid;
   return (
     <footer className="bg-color py-3">
       <div className="container">
@@ -14,7 +17,7 @@ const Footer = () => {
           <div className="col-md-3">
             <ul className="list-unstyled">
               <li>
-                <Link to="/about">About Online Food</Link>
+                <Link to="#">About Online Food</Link>
               </li>
               <li>
                 <Link to="/blog">Read Our Blog</Link>
@@ -41,14 +44,20 @@ const Footer = () => {
               <li>
                 <Link to="/restaurants">Restaurants near me</Link>
               </li>
+              <li>
+                {uid === process.env.REACT_APP_BASE_URL ? (
+                  <Link to="/admin">Admin Page</Link>
+                ) : (
+                  <div />
+                )}
+              </li>
             </ul>
           </div>
         </div>
 
         <div className="footer-bottom d-flex justify-content-between">
           <small className="text-secondary">
-            Copyright &copy; 2021 Urban Eatery. Proudly created by
-            {" Technon Group (Group 3) "}
+            Copyright &copy; 2021 Urban Eatery. Created with&nbsp;
             <span role="img">❤️</span>
             <span>
               <a

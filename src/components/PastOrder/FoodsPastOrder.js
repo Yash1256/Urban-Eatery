@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import FoodItemPastOrders from "../FoodItem/FooditemPastOrder";
-import "./Foods.css";
+import FoodItemPastOrders from "./FoodItemPastOrders";
 import "./PastOrder.css";
 import firebase from "../firebase-config";
 import { useAuth } from "../SignUp/useAuth";
@@ -13,12 +12,10 @@ const FoodsPastOrder = (props) => {
   const [userid, setuserid] = useState();
 
   useEffect(() => {
-    const user = async () => {
-      if (userauth.user) {
-        const id = await userauth.user.uid;
-        if (userauth.user != undefined || userauth.user != null) {
-          setuserid(id);
-        }
+    const user = () => {
+      const user = firebase.auth().currentUser;
+      if (user) {
+        setuserid(user.uid);
       }
     };
     user();
@@ -32,7 +29,6 @@ const FoodsPastOrder = (props) => {
           .collection("users")
           .doc(userid)
           .collection("orders");
-
         Ref.where("products", "!=", [])
           .get()
           .then((snap) => {
@@ -50,28 +46,7 @@ const FoodsPastOrder = (props) => {
   return (
     <section className="food-area my-5">
       <div className="container">
-        <nav>
-          <ul className="nav justify-content-center">
-            <li className="nav-item" onClick={() => setType("account")}>
-              <span
-                to="account"
-                className={type === "account" ? "active nav-link" : "nav-link"}
-              >
-                <Link to="/account">Account</Link>
-              </span>
-            </li>
-            <li className="nav-item" onClick={() => setType("pastOrder")}>
-              <span
-                to="pastOrder"
-                className={
-                  type === "pastOrder" ? "active nav-link" : "nav-link"
-                }
-              >
-                <Link to="/pastOrder">Past Order</Link>
-              </span>
-            </li>
-          </ul>
-        </nav>
+        <h1 className="my-order-heading">My Orders</h1>
         <div className="container">
           <div className="row my-5">
             {selectedFastFoods.map((food) => (

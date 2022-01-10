@@ -1,9 +1,7 @@
 import React, { useEffect } from "react";
 import "./Shipment.css";
-// import * as firebase from "firebase/app";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import { useAuth } from "../SignUp/useAuth";
 import { useState } from "react";
 import firebase from "../firebase-config";
 
@@ -15,8 +13,9 @@ const Shipment = (props) => {
   const { orderID, deliveryDetails } = props.orderDetails;
   const [userid, setuserid] = useState();
   const { register, handleSubmit, errors } = useForm();
-  const onSubmit = (data) => {
-    props.deliveryDetailsHandler(data);
+  const onSubmit = (register) => {
+    console.log(register);
+    props.deliveryDetailsHandler(register);
     console.log("submitted in database");
     onOrderComplete();
   };
@@ -31,35 +30,64 @@ const Shipment = (props) => {
   const tax = (subTotal / 100) * 5;
   const deliveryFee = totalQuantity && 40;
   const grandTotal = subTotal + tax + deliveryFee;
-  const userauth = useAuth();
-
   useEffect(() => {
     const user = () => {
       const user = firebase.auth().currentUser;
-      if (user) {
-        setuserid(user.uid);
-      }
+      setuserid(user.uid);
     };
     user();
   }, []);
 
+  function handlePayment() {
+    props.paymentHandler(grandTotal);
+    props.clearCart();
+  }
+
   async function onOrderComplete() {
+    const totalOrdersRef = await firebase.firestore().collection("orders");
+    const adminDataRef = await firebase
+      .firestore()
+      .collection("admin")
+      .doc("PXToN4KwoyUcMZFpFyCRBOQhvXj1");
+
+    adminDataRef.update({
+      totalSales: firebase.firestore.FieldValue.increment(grandTotal),
+      orderCount: firebase.firestore.FieldValue.increment(1),
+      productSalesCount: firebase.firestore.FieldValue.increment(totalQuantity),
+    });
+
+    const addressRef = await firebase
+      .firestore()
+      .collection("users")
+      .doc(userid);
     const ordersRef = await firebase
       .firestore()
       .collection("users")
       .doc(userid)
       .collection("orders");
-    ordersRef
+
+    addressRef.update({
+      moneySpent: firebase.firestore.FieldValue.increment(grandTotal),
+      address: props.deliveryDetails,
+      orderCount: firebase.firestore.FieldValue.increment(1),
+    });
+
+    await totalOrdersRef.add({
+      products: props.cart,
+      address: props.deliveryDetails,
+    });
+
+    await ordersRef
       .add({
         products: props.cart,
-        deliveryDetails: props.deliveryDetails,
+        address: props.deliveryDetails,
       })
       .then(function (docRef) {
         props.setorderDetailsHandler({
           deliveryDetails: props.deliveryDetails,
           orderID: docRef.id,
         });
-        // orderID = docRef.id ;
+
         console.log("Tutorial created with ID: ", docRef.id);
       })
       .catch(function (error) {
@@ -122,6 +150,18 @@ const Shipment = (props) => {
               />
               {errors.businessName && (
                 <span className="error">Business name is required</span>
+              )}
+            </div>
+
+            <div className="form-group">
+              <input
+                name="phoneNumber"
+                className="form-control"
+                ref={register({ required: true })}
+                placeholder="Phone Number"
+              />
+              {errors.phoneNumber && (
+                <span className="error">Phone Number is required</span>
               )}
             </div>
 
@@ -233,12 +273,12 @@ const Shipment = (props) => {
               toDoor && road && flat && businessName && address ? (
                 <Link
                   to={{
-                    pathname: "/order-complete",
+                    pathname: "/payment",
                     state: orderID,
                   }}
                 >
                   <button
-                    onClick={() => props.clearCart()}
+                    onClick={handlePayment}
                     className="btn btn-block btn-danger"
                   >
                     Check Out Your Food

@@ -15,10 +15,18 @@ import Shipment from "./components/Shipment/Shipment";
 import OrderComplete from "./components/OrderComplete/OrderComplete";
 import SearchResult from "./components/SearchResult/SearchResult";
 import Account from "./components/Account/Account";
-import PastOrder from "./components/Foods/FoodsPastOrder";
-
+import Restaurent from "./components/Restaurant/Resturant";
+import PastOrder from "./components/PastOrder/FoodsPastOrder";
+import StripeComponent from "./components/StripePayment/StripeComponent";
+import Admin from "./components/Admin/AdminPage";
+import { AdminRoute } from "./components/SignUp/useAuth";
 function App() {
   const [cart, setCart] = useState([]);
+  const [grandTotal, setGrandTotal] = useState(0);
+
+  function paymentHandler(amount) {
+    setGrandTotal(amount);
+  }
 
   const cartHandler = (currentFood) => {
     const alreadyAdded = cart.find((item) => item.id === currentFood.id);
@@ -34,7 +42,7 @@ function App() {
 
   const [deliveryDetails, setDeliveryDetails] = useState({
     toDoor: "Delivery To Door",
-    road: null,
+    read: null,
     businessName: null,
     address: null,
   });
@@ -81,18 +89,6 @@ function App() {
             <Footer />
           </Route>
 
-          <Route exact path="/account">
-            <Header cart={cart} />
-            <Account />
-            <Footer />
-          </Route>
-
-          <Route exact path="/pastOrder">
-            <Header cart={cart} />
-            <PastOrder cart={cart} orderDetails={orderDetails} />
-            <Footer />
-          </Route>
-
           <Route path="/food/:id">
             <Header cart={cart} />
             <FoodDetails cart={cart} cartHandler={cartHandler} />
@@ -117,6 +113,7 @@ function App() {
               deliveryDetailsHandler={deliveryDetailsHandler}
               checkOutItemHandler={checkOutItemHandler}
               clearCart={clearCart}
+              paymentHandler={paymentHandler}
             />
             <Footer />
           </PrivateRoute>
@@ -134,6 +131,32 @@ function App() {
           <Route path="/signup">
             <SignUp />
           </Route>
+
+          <Route path="/explore">
+            <Header cart={cart} />
+            <Restaurent cart={cart} />
+            <Footer />
+          </Route>
+
+          <PrivateRoute path="/account">
+            <Header cart={cart} />
+            <Account />
+            <Footer />
+          </PrivateRoute>
+
+          <PrivateRoute exact path="/pastOrder">
+            <Header cart={cart} />
+            <PastOrder cart={cart} orderDetails={orderDetails} />
+            <Footer />
+          </PrivateRoute>
+
+          <PrivateRoute path="/payment">
+            <StripeComponent grandTotal={grandTotal} />
+          </PrivateRoute>
+
+          <AdminRoute path="/admin">
+            <Admin />
+          </AdminRoute>
 
           <Route path="*">
             <NotFound />

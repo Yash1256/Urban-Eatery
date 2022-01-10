@@ -1,105 +1,97 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import "./../Foods/Foods.css";
-// import "./Account.css";
-import { useAuth } from "../SignUp/useAuth";
-
-let quotes = [
-  "The Food Quotes makes me very hungry for the best food.",
-  "Food is my world! No matter if anybody say me hippo!",
-  "I love food because at the end, it is the only thing i love the most in my life!",
-  "If i have to choose between Boyfriend or Food, I would definitely go with the food.",
-  "My food love is pure than your fake love. Food live long!",
-  "Food is my negative point, I can't be without good food.",
-  "I love only healthy food, It gives me the strength more than junk food.",
-  "I would love to be a healthy foodie not to be a fake love!",
-  "Healthy food makes a healthy future and life.",
-  "Eat healthy, feel healthy and stay healthy!",
-];
+import firebase from "../firebase-config";
+import { Link } from "react-router-dom";
+import "./account.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTruck, faHeart } from "@fortawesome/free-solid-svg-icons";
 
 const Account = (props) => {
-  const [quote, setQuote] = useState(quotes[0]);
-  const [type, setType] = useState("account");
-  const userauth = useAuth();
-  const [userid, setuserid] = useState();
   const [email, setemail] = useState();
   const [name, setname] = useState();
   const [image, setimage] = useState("");
-  const [deliverydetails, setdeliverydetails] = useState(
-    "Some where, From , SOme Where"
-  );
+  const [uid, setuid] = useState("");
+  const [deliverydetails, setdeliverydetails] = useState("");
+
   useEffect(() => {
-    setdeliverydetails(props.deliverydetails);
-    const user = async () => {
-      if (userauth.user) {
-        const id = await userauth.user;
-        if (userauth.user != undefined || userauth.user != null) {
-          setuserid(id);
-          console.log(user);
-          setimage(id.photoURL);
-          setname(id.displayName);
-          setemail(id.email);
-        }
+    const user = () => {
+      const user = firebase.auth().currentUser;
+
+      if (user) {
+        setimage(user.photoURL);
+        setname(user.displayName);
+        setemail(user.email);
+        setuid(user.uid);
       }
     };
     user();
-
-    setQuote(quotes[Math.floor(Math.random() * 10)]);
   }, []);
-  console.log(userid);
+
+  console.log("UID: " + uid);
   return (
-    <section className="food-area my-5">
-      <div className="container">
-        <nav>
-          <ul className="nav justify-content-center">
-            <li className="nav-item" onClick={() => setType("account")}>
-              <span
-                to="account"
-                className={type === "account" ? "active nav-link" : "nav-link"}
-              >
-                <Link to="/account">Account</Link>
-              </span>
-            </li>
-            <li className="nav-item" onClick={() => setType("pastOrder")}>
-              <span
-                to="pastOrder"
-                className={
-                  type === "pastOrder" ? "active nav-link" : "nav-link"
-                }
-              >
-                <Link to="/pastOrder">Past Order</Link>
-              </span>
-            </li>
-          </ul>
-        </nav>
-        <div className="card-body">
-          <div className="row">
-            <div className="col w-50">
-              <div className="float-container">
-                <div className="overview">
-                  <div className="name">
-                    <div
-                      className="avatar-container"
-                      style={{ marginLeft: "70px" }}
-                    >
-                      <img src={image} alt="Profile Image" className="avatar" />
-                    </div>
-                    <p className="name-description lead">{quote}</p>
-                  </div>
+    <>
+      <h1 className="profile-heading">My Profile</h1>
+      <div class="row py-5 px-4">
+        <div class="col-xl-4 col-md-6 col-sm-10 mx-auto">
+          <div class="bg-white shadow rounded overflow-hidden">
+            <div class="px-4 pt-0 pb-4 bg-dark">
+              <div class="media align-items-end profile-header">
+                <div class="profile mr-3">
+                  <img
+                    src={image}
+                    alt="..."
+                    width="130"
+                    class="rounded mb-2 img-thumbnail"
+                  />
+
+                  <Link to="/pastorder">
+                    <a href="#" class="btn btn-dark btn-sm btn-block">
+                      My Orders
+                    </a>
+                  </Link>
+                </div>
+                <div class="media-body mb-5 text-white">
+                  <h4 class="mt-0 mb-0">
+                    {name}{" "}
+                    {uid === process.env.REACT_APP_BASE_URL ? (
+                      "(admin)"
+                    ) : (
+                      <div />
+                    )}
+                  </h4>
+                  <p class="small mb-4">
+                    {" "}
+                    <i class="fa fa-map-marker mr-2"></i>
+                    {email}
+                  </p>
                 </div>
               </div>
             </div>
-            <div className="col w-50" style={{ marginTop: "40px" }}>
-              <h4 class="display-4">{name}</h4>
-              <br />
-              <p className="lead">{email} </p>
-              <br />
-              <div>{deliverydetails} </div>
+
+            <div class="bg-light p-4 d-flex justify-content-end text-center">
+              <ul class="list-inline mb-0">
+                <li class="list-inline-item">
+                  <h5 class="font-weight-bold mb-0 d-block">8</h5>
+                  <small class="text-muted">
+                    {" "}
+                    <FontAwesomeIcon icon={faTruck} />
+                    <i class="fa fa-picture-o mr-1"></i>Delivery
+                  </small>
+                </li>
+                <li class="list-inline-item">
+                  <h5 class="font-weight-bold mb-0 d-block">12</h5>
+                  <small class="text-muted">
+                    {" "}
+                    <FontAwesomeIcon icon={faHeart} />
+                    <i class="fa fa-user-circle-o mr-1"></i>Likes
+                  </small>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </>
   );
 };
 

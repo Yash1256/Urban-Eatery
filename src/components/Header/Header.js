@@ -4,7 +4,12 @@ import "./Header.css";
 import Logo from "../../images/logo2.png";
 import userPhoto from "../../images/ICON/Group 2.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartArrowDown } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCartArrowDown,
+  faUtensils,
+  faStore,
+  faHamburger,
+} from "@fortawesome/free-solid-svg-icons";
 import { useAuth } from "../SignUp/useAuth";
 
 const Header = (props) => {
@@ -18,6 +23,24 @@ const Header = (props) => {
         </Link>
 
         <ul className="navbar-nav align-items-center">
+
+        <li className="nav-item active">
+            <Link to="/explore" className="nav-link">
+              <FontAwesomeIcon icon={faUtensils} />
+              <span className="badge bg-light">Explore</span>
+            </Link>
+          </li>
+
+
+
+          <li className="nav-item active">
+            <Link to="/pastorder" className="nav-link">
+              <FontAwesomeIcon icon={faHamburger} />
+              <span className="badge bg-light">My Orders</span>
+            </Link>
+          </li>
+
+    
           <li className="nav-item active">
             <Link to="/checkout" className="nav-link">
               <FontAwesomeIcon icon={faCartArrowDown} />
@@ -29,7 +52,7 @@ const Header = (props) => {
 
           <li className="nav-item">
             {auth.user ? (
-              <Link to="/checkout" className="nav-link">
+              <Link to="/account" className="nav-link">
                 {auth.user.displayName}
                 <img
                   className="ml-3 circle"

@@ -1,0 +1,32 @@
+[
+    {
+        "name": "CafÃ© Jack",
+        "phoneNumber": "(338) 204-4803",
+        "address": "5th Floor 12th Square, Road No 12, Banjara Hills, Banjara Hills"
+    },
+    {
+        "name": "Lord of the Wings",
+        "phoneNumber": "(303) 950-3083",
+        "address": "Santosh Nagar, Bandra West, Mumbai, Maharashtra"
+    },
+    {
+        "name": "The Breakfast Club",
+        "phoneNumber": "(317) 673-4776",
+        "address": "Kalady Malayattoor Rd, Malayattoor, Kerla"
+    },
+    {
+        "name": "Dairy Godmother",
+        "phoneNumber": "(928) 398-5000",
+        "address": "177-D, Defence Colony, Jajmau, UP"
+    },
+    {
+        "name": "Brewed Awakening",
+        "phoneNumber": "(258) 530-4621",
+        "address": "Street Number 7, Lalalajpatray Colony, Pratap Nagar, Jodhpur, Rajasthan"
+    },
+    {
+        "name": "Backyard Bowls",
+        "phoneNumber": "(369) 402-4874",
+        "address": "Medavakkam Main Rd, Ambal Nagar, Keelakatalai, Chennai, Tamil Nadu"
+    }
+]

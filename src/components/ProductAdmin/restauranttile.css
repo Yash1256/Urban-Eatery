@@ -1,0 +1,13 @@
+.horizontal-card-bg-img {
+  width: 180px;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+.card-img {
+  width: inherit;
+}
+
+.horizontal-card-btn-container {
+  width: 140px;
+}
